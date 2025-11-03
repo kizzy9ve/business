@@ -1,295 +1,260 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business Landing Page</title>
-    <link rel="stylesheet" href="./styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário + API JSONPlaceholder</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #f7f9fb;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .dark-mode {
+      background-color: #121212;
+      color: #f1f1f1;
+    }
+    .dark-mode .card {
+      background-color: #1e1e1e;
+      border-color: #333;
+    }
+    .dark-mode input, 
+    .dark-mode textarea {
+      background-color: #222;
+      color: #f1f1f1;
+      border: 1px solid #444;
+    }
+    .fs-form {
+      max-width: 600px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    }
+    .dark-mode .fs-form {
+      background: #1f1f1f;
+    }
+    .card {
+      margin-bottom: 1rem;
+    }
+  </style>
 </head>
 
-<body>
+<body class="container py-4">
 
-    <div class="container">
+  <h1 class="text-center mb-4">📋 Formulário </h1>
 
-        <div class="hero-container">
-            <img src="./imagens/logo.png" alt="Logo da empresa">
+  <!-- BOTÃO DE MODO ESCURO -->
+  <div class="text-center mb-4">
+    <button id="toggleDark" class="btn btn-secondary">🌙 Alternar Modo Escuro</button>
+  </div>
 
-            <h1>The best products start with Figma</h1>
-            <P>Most calendars are designed for teams. Slate is designed for freelancers</P>
-            <a href="./try-for-free.html" class="btn-primario">Try For Free</a>
-        </div>
-    </div>
-    <!-- 
-
-1 - Escrever um título e um texto na tela
-2 - Centralizar o título e o texto
-3 - Alinhar horizontalmente 3 blocos de texto na tela
-4 - Alinhar verticalmente uma imagem e 2 textos dentro de cada bloco
-5 - Colocar um cor de fundo em uma seção inteira
-6 - Alinhar todo o conteúdo do site no centro
-
--->
-
-    <div id="section-features">
-        <h1>Features</h1>
-        <p>Most calendars are designed for teams.<br />Slate is designed for freelancers</p>
-        <!-- <div class="blocks">
-            <div>
-                <img src="./imagens/ico_feat_1.png" alt="Característica 1">
-                <h3>OpenType features Variable fonts</h3>
-                <p>Slate helps you see how many more days you need to work to reach your financial goal.</p>
-            </div>
-            <div>
-                <img src="./imagens/ico_feat_2.png" alt="Característica 2">
-                <h3>Design with real data</h3>
-                <p>Slate helps you see how many more days you need to work to reach your financial goal.</p>
-            </div>
-            <div>
-                <img src="./imagens/ico_feat_3.png" alt="Característica 3">
-                <h3>Fastest way to take action</h3>
-                <p>Slate helps you see how many more days you need to work to reach your financial goal.</p>
-            </div>
-        </div> -->
-        <ul id="blocos-dinamicos" class="blocks"></ul>
+  <!-- FORMULÁRIO ORIGINAL -->
+  <form
+    action="https://formspree.io/f/xanljpbn"
+    class="fs-form"
+    target="_top"
+    method="POST"
+  >
+    <div class="fs-field mb-3">
+      <label class="form-label" for="nome-sobrenome">Nome e Sobrenome</label>
+      <input
+        class="form-control"
+        type="text"
+        id="nome-sobrenome"
+        name="nome-sobrenome"
+        placeholder="Digite seu nome completo"
+        pattern="[A-Za-zÀ-ÿ\s]+"
+        title="Digite apenas letras"
+        required
+      />
     </div>
 
-    <div class="list-horizontal">
-        <div class="list-vertical">
-            <h3>Fastest way to organize</h3>
-            <p>Most calendars are designed for teams. Slate is designed for freelancers</p>
-            <!-- <button class="btn-primario">Try For Free</button> -->
-            <a href="./try-for-free.html" class="btn-primario">Try For Free</a>
-        </div>
-        <img src="./imagens/telapc.png" alt="Tela de um notebook">
+    <div class="fs-field mb-3">
+      <label class="form-label" for="email">E-mail</label>
+      <input
+        class="form-control"
+        type="email"
+        id="email"
+        name="email"
+        placeholder="exemplo@dominio.com"
+        pattern="[a-zA-Z._%+-]+@[a-zA-Z.-]+\.[a-zA-Z]{2,}$"
+        title="Digite um e-mail válido (somente letras permitidas)"
+        required
+      />
     </div>
 
-    <div id="mexer">
-        <div class="list-horizontal">
-            <img src="./imagens/imgcarta.png" alt=" imagem de carta">
-            <div class="list-vertical">
-                <h3>At your fingertips </h3>
-                <h1 id="cor">Lightning fast prototyping</h1>
-                <h4 id="baixo">Subscribe to our Newsletter</h4>
-                <p id="margeem">Available exclusivery on Figmaland</p>
-                <div class="list-horizontal">
-                    <a id="margem" href="./E-mail" class="btn-secundario">E-mail</a>
-                    <a href="./Subscribe" class="btn-primario">Subscribe</a>
-                </div>
-            </div>
-        </div>
+    <div class="fs-field mb-3">
+      <label class="form-label" for="telefone">Telefone</label>
+      <input
+        class="form-control"
+        type="tel"
+        id="telefone"
+        name="telefone"
+        placeholder="Ex: 11 91234 5678"
+        pattern="[\d\s]{10,15}"
+        title="Digite apenas números e espaços (ex: 11 91234 5678)"
+        required
+      />
     </div>
-    <div>
-        <div id="partner-container">
-            <h1>Partners</h1>
-            <p>Most calendars are designed for teams.</p>
-            <p>Slate is designed for freelancers</p>
-            <!-- <div class="partners">
-                <div class="partner">
-                    <p class="name">Google</p>
-                    <img src="./imagens/logos_google.png" alt="logo google">
-                </div>
-                <div class="partner">
-                    <p class="name">Amazon</p>
-                    <img src="./imagens/logos_amazon.png" alt="logo amazon">
-                </div>
-                <div class="partner">
-                    <p class="name">Microsoft</p>
-                    <img src="./imagens/logos_microsoft.png" alt="logo Microsoft">
-                </div>
-                <div class="partner">
-                    <p class="name">Uber</p>
-                    <img src="./imagens/logos_uber.png" alt="logo Uber">
-                </div>
-                <div class="partner">
-                    <p class="name">Google</p>
-                    <img src="./imagens/logos_google.png" alt="logo google">
-                </div>
-                <div class="partner">
-                    <p class="name">Amazon</p>
-                    <img src="./imagens/logos_amazon.png" alt="logo Amazon">
-                </div>
-                <div class="partner">
-                    <p class="name">Microsoft</p>
-                    <img src="./imagens/logos_microsoft.png" alt="logo Microsoft">
-                </div>
-                <div class="partner">
-                    <p class="name">Uber</p>
-                    <img src="./imagens/logos_uber.png" alt="logo Uber">
-                </div>
-            </div> -->
-        </div>
-        
-      <div id="container-parceiros">
-        <h1>Lista de Parceiros</h1>
-        <p>Lista dinâmica com Javascript</p>
-        <ul id="lista-dinamica"></ul>
-      </div>
-      
-        <div id="kkk">
-            <p id="zxx"><a href="./try-for-free.html" class="btn-primario">Try For Free</a></p>
-        </div>
 
-        <div id="zzz">
-            <h1>Testimonials</h1>
-            <img src="./imagens/Brands.png" alt=" brands">
-            <p>Most calendars are designed for teams. Slate is designed for freelancers</p>
-            <p id="zx">who want a simple way to plan their schedule.</p>
-            <div id="kkkz">
-                <p><a href="./try-for-free.html" class="btn-primario">More Testimonials</a></p>
-            </div>
-        </div>
-
-        <div id="section-pricing">
-            <div id="section-features">
-                <h1 id="branco">Pricing</h1>
-                <p id="branco">Most calendars are designed for teams.<br />Slate is designed for freelancers</p>
-                <!-- <div class="blocos">
-                    <div class="plano">
-                        <h3>FREE</h3>
-                        <p>Organize across all<br> apps by hand</p>
-                        <p>0$ per month</p>
-                        <p>Pricing Feature</p>
-                        <p>Pricing Feature</p>
-                        <p>Pricing Feature</p>
-                        <p>Pricing Feature</p>
-                        <p>Pricing Feature</p>
-                        <p id="botao feature"><a href="./try-for-free.html" class="btn-quarto">Order now</a></p>
-                    </div>
-                    <div class="plano destaque">
-                        <h3>STANDARD</h3>
-                        <p>Organize across all<br> apps by hand</p>
-                        <p>10$ per month</p>
-                        <p>Pricing Feature</p>
-                        <p>Pricing Feature</p>
-                        <p>Pricing Feature</p>
-                        <p>Pricing Feature</p>
-                        <p>Pricing Feature</p>
-                        <p id="botao feature"><a href="./try-for-free.html" class="btn-quinto">Order now</a></p>
-                    </div>
-                    <div class="plano">
-                        <h3>BUSINESS</h3>
-                        <p>Organize across all<br> apps by hand</p>
-                        <p>99$ per month</p>
-                        <p>Pricing Feature</p>
-                        <p>Pricing Feature</p>
-                        <p>Pricing Feature</p>
-                        <p>Pricing Feature</p>
-                        <p>Pricing Feature</p>
-                        <p id="botao feature"><a href="./try-for-free.html" class="btn-quarto">Order now</a></p>
-                    </div> -->
-                    <ul id="secao-blocos" class="blocos"></ul>
-                </div>
-            </div>
-        </div>
-
-
-        <div id="xxx">
-            <h1>Contact Us</h1>
-            <p>Most calendars are designed for teams.</p>
-            <p>Slate is designed for freelancers</p>
-        </div>
-
-        <div id="secao-contato">
-            <div class="formulario">
-                <h1>Contact us</h1>
-                <form action="processa_formulario.php" method="post">
-                    <!-- Campo de texto -->
-                    <label for="nome">Your name:</label><br>
-                    <input type="text" id="nome" name="nome" required><br><br>
-
-                    <label for="email">Your email:</label><br>
-                    <input type="email" id="email" name="email" required><br><br>
-
-                    <!-- Campo de mensagem -->
-                    <label for="mensagem">Your message:</label><br>
-                    <textarea id="mensagem" name="mensagem" rows="5" cols="40"></textarea><br><br>
-
-                    <!-- Botão de envio -->
-                    <!-- <input type="submit" class="btn-primario" value="Enviar"> -->
-                    <button type="submit" class="btn-primario">Enviar</button>
-                </form>
-            </div>
-            <div class="informacao">
-                <div class="contatos">
-                    <div class="contato">
-                        <img src="./imagens/logo_localizacao.png">
-                        <p>6386 Spring st anchorage,<br>Georgia 12473 United states</p>
-                    </div>
-                    <div class="contato">
-                        <img src="./imagens/logo_celular.png" alt="">
-                        <p>(843) 555-0130</p>
-                    </div>
-                    <div class="contato">
-                        <img src="./imagens/logo_carta.png" alt="">
-                        <p>willie,jennings@example.com</p>
-                    </div>
-                </div>
-                <div><p></p></div>
-                <div>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1925.139594959802!2d-149.86663891548503!3d61.150334609914346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x56c899d638f6b8b9%3A0x8001486daef0fbc!2s6386%20Spring%20St%2C%20Anchorage%2C%20AK%2099518%2C%20EUA!5e0!3m2!1spt-BR!2sbr!4v1761579698443!5m2!1spt-BR!2sbr" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-                <div class="icons">
-                    <a href="https://twitter.com.br"><img src="./imagens/ico_twitter_azul.png" alt="Twitter"></a>
-                    <a href="https://facebook.com.br"><img src="./imagens/ico_facebook_azul.png" alt="Facebook"></a>
-                    <a href="https://linkedin.com.br"><img src="./imagens/ico_linkedin_azul.png" alt="LinkedIn"></a>
-                </div>
-            </div>
-        </div>
-
-        <div id="rodape">
-            <div id="coluna">
-                <h3>Pages</h3>
-                <p>Home</p>
-                <p>Poduct</p>
-                <p>Pricing</p>
-                <p>About</p>
-                <p>Contact</p>
-            </div>
-            <div id="coluna2">
-                <h3>Tomothy</h3>
-                <p>Eleanor Edwards</p>
-                <p>Ted Robertson</p>
-                <p>Annete Russell</p>
-                <p>Jennie Mckinney</p>
-                <p>Gloria Richards</p>
-            </div>
-            <div id="coluna3">
-                <h3>Jane Black</h3>
-                <p>Philip Jones</p>
-                <p>Product</p>
-                <p>Colleen Russell</p>
-                <p>Marvin Hwakins</p>
-                <p>Bruce Simmmons</p>
-            </div>
-            <div class="dados"> 
-                <p class="texto-com-imagens">
-                    <img src="./imagens/ico_localizacao_branco.png" alt="Endereço da empresa"> 
-                    7480 Mockingbird Hill undefined
-                </p>
-                <p class="texto-com-imagens">
-                    <img src="./imagens/ico_celular_branco.png" alt="Nosso número de celular"> 
-                    (239) 555-0108
-                </p>
-                <div>
-                    <a href="https://twitter.com.br"><img src="./imagens/ico_twitter_branco.png" alt="Twitter"></a>
-                    <a href="https://facebook.com.br"><img src="./imagens/ico_facebook_branco.png" alt="Facebook"></a>
-                    <a href="https://linkedin.com.br"><img src="./imagens/ico_linkedin_branco.png" alt="LinkedIn"></a>
-                </div>
-            </div>
-        </div>
-
-
-
-
-
-
-
-
-
-
+    <div class="fs-field mb-3">
+      <label class="form-label" for="message">Mensagem</label>
+      <textarea
+        class="form-control"
+        id="message"
+        name="message"
+        placeholder="Digite sua mensagem"
+        required
+      ></textarea>
     </div>
-    <script src="./scripts.js"></script>
+
+    <div class="fs-button-group text-center">
+      <button class="btn btn-primary" type="submit">Enviar</button>
+    </div>
+  </form>
+
+  <hr class="my-5">
+
+  <!-- SEÇÃO DA API -->
+  <section>
+    <h2 class="text-primary">📰 Posts</h2>
+
+    <!-- Campo de busca -->
+    <div class="input-group mb-3">
+      <input type="text" id="search" class="form-control" placeholder="Buscar post por título...">
+      <button class="btn btn-outline-primary" id="searchBtn">🔍 Buscar</button>
+    </div>
+
+    <div id="posts" class="row g-3"></div>
+    <div class="text-center mt-3">
+      <button class="btn btn-outline-success" id="loadMore">Carregar mais</button>
+    </div>
+  </section>
+
+  <section class="mt-5">
+    <h2 class="text-success">👤 Usuários</h2>
+    <div id="users" class="row g-3"></div>
+  </section>
+
+  <section class="mt-5">
+    <h2 class="text-info">💬 Comentários</h2>
+    <p>Clique em um post para ver seus comentários.</p>
+    <div id="comments" class="row g-3"></div>
+  </section>
+
+  <!-- SCRIPT -->
+  <script>
+    let posts = [];
+    let currentIndex = 0;
+    const perPage = 5;
+
+    const postsContainer = document.getElementById('posts');
+    const commentsContainer = document.getElementById('comments');
+
+    // Função utilitária para criar cards
+    function createCard(title, body, color = "light") {
+      return `
+        <div class="col-md-6 col-lg-4">
+          <div class="card border-${color}">
+            <div class="card-body">
+              <h5 class="card-title">${title}</h5>
+              <p class="card-text">${body}</p>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Carregar posts
+    async function carregarPosts() {
+      const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+      posts = await res.json();
+      exibirPosts();
+    }
+
+    // Exibir posts por página
+    function exibirPosts() {
+      const slice = posts.slice(currentIndex, currentIndex + perPage);
+      slice.forEach(post => {
+        const div = document.createElement('div');
+        div.className = 'col-md-6 col-lg-4';
+        div.innerHTML = `
+          <div class="card border-primary h-100" style="cursor:pointer;">
+            <div class="card-body">
+              <h5 class="card-title">${post.title}</h5>
+              <p class="card-text">${post.body}</p>
+            </div>
+          </div>`;
+        div.onclick = () => carregarComentarios(post.id);
+        postsContainer.appendChild(div);
+      });
+      currentIndex += perPage;
+    }
+
+    // Buscar posts por título
+    document.getElementById('searchBtn').addEventListener('click', () => {
+      const termo = document.getElementById('search').value.toLowerCase();
+      postsContainer.innerHTML = '';
+      posts
+        .filter(p => p.title.toLowerCase().includes(termo))
+        .forEach(post => {
+          const div = document.createElement('div');
+          div.className = 'col-md-6 col-lg-4';
+          div.innerHTML = `
+            <div class="card border-primary h-100">
+              <div class="card-body">
+                <h5 class="card-title">${post.title}</h5>
+                <p class="card-text">${post.body}</p>
+              </div>
+            </div>`;
+          postsContainer.appendChild(div);
+        });
+    });
+
+    // Botão de carregar mais
+    document.getElementById('loadMore').addEventListener('click', exibirPosts);
+
+    // Carregar usuários
+    async function carregarUsuarios() {
+      const res = await fetch('https://jsonplaceholder.typicode.com/users');
+      const users = await res.json();
+      const container = document.getElementById('users');
+      container.innerHTML = '';
+      users.forEach(u => {
+        const content = `
+          <strong>Email:</strong> ${u.email}<br>
+          <strong>Cidade:</strong> ${u.address.city}<br>
+          <strong>Website:</strong> ${u.website}
+        `;
+        container.innerHTML += createCard(u.name, content, "success");
+      });
+    }
+
+    // Carregar comentários de um post
+    async function carregarComentarios(postId) {
+      const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`);
+      const comments = await res.json();
+      commentsContainer.innerHTML = `<h4>💬 Comentários do Post #${postId}</h4>`;
+      comments.forEach(c => {
+        const content = `<strong>${c.email}</strong><br>${c.body}`;
+        commentsContainer.innerHTML += createCard(c.name, content, "info");
+      });
+      commentsContainer.scrollIntoView({ behavior: "smooth" });
+    }
+
+    // Alternar modo escuro
+    document.getElementById('toggleDark').addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+
+    // Inicializar
+    carregarPosts();
+    carregarUsuarios();
+  </script>
 </body>
-
 </html>
